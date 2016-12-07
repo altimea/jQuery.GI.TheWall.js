@@ -454,13 +454,16 @@
               height: 'auto'
             });
 
-            var newHeight = options.dynamicHeight ? self.$expanderInner.outerHeight() : options.initialWrapperHeight;
-            _updateExpanderWrapperHeight.call(self, newHeight);
-            // update the DOM
-            self.update();
-            _scrollTo(self.$expanderWrapper.offset().top - options.scrollOffset);
-            execCallback(options.onContentLoaded);
-            isLoading = false;
+              setTimeout(function() {
+                  var newHeight = options.dynamicHeight ? self.$expanderInner.outerHeight() : options.initialWrapperHeight;
+                  _updateExpanderWrapperHeight.call(self, newHeight);
+                  // update the DOM
+                  self.update();
+                  _scrollTo(self.$expanderWrapper.offset().top - options.scrollOffset);
+                  execCallback(options.onContentLoaded);
+                  isLoading = false;
+              }, 50);
+
           });
         }
       };
